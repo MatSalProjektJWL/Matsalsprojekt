@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import Scantext from "./scantext";
+
 
 function Heading() {
   const [Dagens, setDagens] = useState("Tomhet");
-  const [Amount, setAmount] = useState("Tomhet");
   setInterval(uppdateTime,1000) 
   const now = new Date().toLocaleTimeString();
   const [time,setTime] = useState(now);
@@ -13,14 +14,12 @@ function Heading() {
   }
   
  
-  const scan = () => {
-    setAmount(Amount + 1);
-  };
+
   return (
     <div className="Dagens">
       <p>Dagens mat: {Dagens}</p>
-      <p>Totalt för dagen: {Amount}</p>
       <p>{time}</p>
+      <p>Totalt för dagen: {Scantext.Amount}</p>
     </div>
   );
 }

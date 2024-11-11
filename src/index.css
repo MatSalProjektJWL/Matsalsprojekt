@@ -20,15 +20,15 @@ code {
 
 .Dagens {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 30vh;
   width: 100vw;
   font-size: 25px;
   background-color: black;
   color: white;
-  flex-direction: column;
+  flex-direction: row;
 }
-p{
+p {
   margin: 10px;
 }
