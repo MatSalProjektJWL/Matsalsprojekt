@@ -23,7 +23,6 @@ function Scantext() {
       user.current.value = "";
       console.log(hello[0]);
       if (StudentsInList.some((obj) => obj._id === hello[0]._id)) {
-        console.log("MELKER");
       } else {
         insertToList([...StudentsInList, hello[0]]);
         setCount(count + 1);
