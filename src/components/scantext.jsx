@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { countAtom } from "../App";
 import { useAtom } from "jotai";
+import { atoms } from "../App";
 
 function Scantext() {
   const [namn, setNamn] = useState("");
   const [klass, setKlass] = useState("");
-  const [Amount, setAmount] = useState(0);
-  const [count, setCount] = useAtom(countAtom);
+  const [allatoms, setatoms] = useAtom(atoms);
+
   const [StudentsInList, insertToList] = useState([]);
   const user = useRef();
 
@@ -25,7 +25,11 @@ function Scantext() {
       if (StudentsInList.some((obj) => obj._id === hello[0]._id)) {
       } else {
         insertToList([...StudentsInList, hello[0]]);
-        setCount(count + 1);
+        setatoms({
+          ...allatoms,
+          weekcount: allatoms.weekcount + 1,
+          daycount: allatoms.daycount + 1,
+        });
       }
       user.current.focus();
     }
@@ -36,7 +40,7 @@ function Scantext() {
   }, []);
 
   return (
-    <div>
+    <div className="people">
       {StudentsInList.map((element) => {
         return <h2 key={element._id}>{element.username}</h2>;
       })}

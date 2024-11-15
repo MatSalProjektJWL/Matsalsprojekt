@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import Scantext from "./scantext";
 import { countAtom } from "../App";
 import { useAtom } from "jotai";
-
+import WeekCounter from "./weekcounter";
 function Heading() {
-  const [count, setCount] = useAtom(countAtom);
   const [Dagens, setDagens] = useState("Tomhet");
   setInterval(uppdateTime, 1000);
   const now = new Date().toLocaleTimeString();
@@ -35,8 +34,10 @@ function Heading() {
       <div>
         Dagens mat: <p dangerouslySetInnerHTML={{ __html: Dagens }}></p>
       </div>
-      <p>{time}</p>
-      <p>Totalt för dagen: {count}</p>
+      <div>
+        <p>{time}</p>
+      </div>
+      <WeekCounter />
     </div>
   );
 }

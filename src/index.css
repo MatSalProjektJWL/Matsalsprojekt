@@ -33,8 +33,12 @@ p {
   margin: 10px;
 }
 
-h2{
+h2 {
   display: flex;
   justify-content: center;
   color: white;
+}
+.people {
+  display: flex;
+  flex-direction: column-reverse;
 }

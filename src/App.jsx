@@ -1,7 +1,14 @@
 import Heading from "./components/header";
 import Scantext from "./components/scantext";
-import { atom } from 'jotai'
-export const countAtom = atom(0)
+
+import { atomWithStorage } from "jotai/utils";
+
+export const atoms = atomWithStorage("atoms", {
+  day: 0,
+  week: 0,
+  daycount: 0,
+  weekcount: 0,
+});
 
 function App() {
   return (
