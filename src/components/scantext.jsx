@@ -3,8 +3,6 @@ import { useAtom } from "jotai";
 import { atoms } from "../App";
 
 function Scantext() {
-  const [namn, setNamn] = useState("");
-  const [klass, setKlass] = useState("");
   const [allatoms, setatoms] = useAtom(atoms);
 
   const [StudentsInList, insertToList] = useState([]);
