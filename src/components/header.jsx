@@ -32,11 +32,17 @@ function Heading() {
 
   return (
     <div className="Dagens">
-      <div>
+      <div className="dagens-section">
         Dagens mat: <p dangerouslySetInnerHTML={{ __html: Dagens }}></p>
       </div>
-      <p>{time}</p>
-      <p>Totalt för dagen: {count}</p>
+
+      <div className="time">
+        <p>{time}</p>
+      </div>
+
+      <div className="dagens-section">
+        <p>Totalt för dagen: {count}</p>
+      </div>
     </div>
   );
 }
