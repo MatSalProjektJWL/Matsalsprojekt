@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Scantext from "./scantext";
-import { countAtom } from "../App";
-import { useAtom } from "jotai";
 import WeekCounter from "./weekcounter";
 function Heading() {
+  
+
   const [Dagens, setDagens] = useState("Tomhet");
   setInterval(uppdateTime, 1000);
   const now = new Date().toLocaleTimeString();
@@ -31,13 +31,17 @@ function Heading() {
 
   return (
     <div className="Dagens">
-      <div>
+      <div className="dagens-section">
         Dagens mat: <p dangerouslySetInnerHTML={{ __html: Dagens }}></p>
       </div>
-      <div>
+
+      <div className="time">
         <p>{time}</p>
       </div>
-      <WeekCounter />
+
+      <div className="dagens-section">
+        <WeekCounter />
+      </div>
     </div>
   );
 }
