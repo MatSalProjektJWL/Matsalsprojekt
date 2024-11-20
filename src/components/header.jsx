@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import Scantext from "./scantext";
 import WeekCounter from "./weekcounter";
 function Heading() {
-  
-
   const [Dagens, setDagens] = useState("Tomhet");
+  const [time, setTime] = useState();
   setInterval(uppdateTime, 1000);
-  const now = new Date().toLocaleTimeString();
-  const [time, setTime] = useState(now);
 
   async function getFoodData(id) {
     const foodData = await fetch(
@@ -18,8 +15,12 @@ function Heading() {
   }
 
   function uppdateTime() {
-    const newtime = new Date().toLocaleTimeString();
-    setTime(newtime);
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const seconds = now.getSeconds().toString().padStart(2, "0");
+
+    setTime(`${hours}:${minutes}:${seconds}`);
   }
   useEffect(() => {
     const melker = async () => {
@@ -36,7 +37,7 @@ function Heading() {
       </div>
 
       <div className="time">
-        <p>{time}</p>
+        <p className="clock">{time}</p>
       </div>
 
       <div className="dagens-section">

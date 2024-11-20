@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Scantext from "./scantext";
-import { WeekAtom, DayAtom, DayCountAtom, WeekCountAtom,ScannedAtom } from "../App";
+import {
+  WeekAtom,
+  DayAtom,
+  DayCountAtom,
+  WeekCountAtom,
+  ScannedAtom,
+} from "../App";
 import { useAtom } from "jotai";
 function WeekCounter() {
   const [weekCount, setWeekCount] = useAtom(WeekCountAtom);
@@ -46,8 +52,12 @@ function WeekCounter() {
 
   return (
     <>
-      <div>Total mängd scanningar idag:{dayCount}</div>
-      <div>Total mängd scanningar denna vecka:{weekCount}</div>
+      <div>
+        <p>Total mängd scanningar idag:{dayCount}</p>
+      </div>
+      <div>
+        <p>Total mängd scanningar denna vecka:{weekCount}</p>
+      </div>
     </>
   );
 }
