@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAtom } from "jotai";
-import { atoms } from "../App";
+import { DayCountAtom, WeekCountAtom, ScannedAtom } from "../App";
 
 function Scantext() {
-  const [namn, setNamn] = useState("");
-  const [klass, setKlass] = useState("");
-  const [allatoms, setatoms] = useAtom(atoms);
+  const [weekCount, setWeekCount] = useAtom(WeekCountAtom);
+  const [dayCount, setDayCount] = useAtom(DayCountAtom);
 
   const [StudentsInList, insertToList] = useState([]);
   const user = useRef();
@@ -25,11 +24,8 @@ function Scantext() {
       if (StudentsInList.some((obj) => obj._id === hello[0]._id)) {
       } else {
         insertToList([...StudentsInList, hello[0]]);
-        setatoms({
-          ...allatoms,
-          weekcount: allatoms.weekcount + 1,
-          daycount: allatoms.daycount + 1,
-        });
+        setDayCount(dayCount + 1);
+        setWeekCount(weekCount + 1);
       }
       user.current.focus();
     }

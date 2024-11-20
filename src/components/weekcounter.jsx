@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Scantext from "./scantext";
-import { atoms } from "../App";
+import { WeekAtom, DayAtom, DayCountAtom, WeekCountAtom,ScannedAtom } from "../App";
 import { useAtom } from "jotai";
 function WeekCounter() {
-  const [allatoms, setatoms] = useAtom(atoms);
-
-
+  const [weekCount, setWeekCount] = useAtom(WeekCountAtom);
+  const [dayCount, setDayCount] = useAtom(DayCountAtom);
+  const [day, setDay] = useAtom(DayAtom);
+  const [week, setWeek] = useAtom(WeekAtom);
 
   const getweek = () => {
     const today = new Date();
@@ -15,26 +16,38 @@ function WeekCounter() {
     return week;
   };
   const getDay = () => {
-    const currentday = new Date();
-    return currentday;
+    const today = new Date();
+    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    const dayOfYear = Math.floor(
+      (today - firstDayOfYear + 86400000) / 86400000
+    );
+
+    return dayOfYear;
   };
   useEffect(() => {
-    if (atoms.week === getweek()) {
-    } else {
-      setatoms({ ...allatoms, week: getweek() });
-      setatoms({ ...allatoms, weekcount: 0 });
-    }
-    if (atoms.day == getDay()) {
-    } else {
-      setatoms({ ...allatoms, day: getDay() });
-      setatoms({ ...allatoms, daycount: 0 });
+    const currentWeek = getweek();
+    const currentDay = getDay();
+
+    if (day != currentDay) {
+      console.log("Cureent day: ", day === currentDay);
+      if (week != currentWeek) {
+        console.log("Cureent week: ", week === currentWeek);
+        setDay(currentDay);
+        setWeek(currentWeek);
+        setDayCount(0);
+        setWeekCount(0);
+      }
+      if (week === currentWeek) {
+        setDay(currentDay);
+        setDayCount(0);
+      }
     }
   }, []);
 
   return (
     <>
-      <div>Total mängd scanningar denna vecka:{allatoms.weekcount}</div>
-      <div>Total mängd scanningar idag:{allatoms.daycount}</div>
+      <div>Total mängd scanningar idag:{dayCount}</div>
+      <div>Total mängd scanningar denna vecka:{weekCount}</div>
     </>
   );
 }
