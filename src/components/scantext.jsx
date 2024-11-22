@@ -99,7 +99,6 @@ function Scantext() {
                 >
                   {element.username}
                 </h2>
-                <div className="hr"></div>
               </div>
             );
           })}
