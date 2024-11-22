@@ -106,7 +106,7 @@ function Scantext() {
         </div>
       ) : (
         <div className="students">
-          <p>Ingen har scannat</p>
+          <p>Ingen har skannat</p>
         </div>
       )}
       <div>
