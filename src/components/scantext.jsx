@@ -72,7 +72,11 @@ function Scantext() {
             let font = "";
             let bg = "";
             let long = "";
-            if (element.username === "Josef Matti") {
+            if (
+              element.username === "Josef Matti" ||
+              "Lucas Eifrém" ||
+              "Vukasin Tumbas"
+            ) {
               highlightColor = "gold"; // Highlight for the specific name "Josef Matti"
               font = "Times New Roman";
               bg = "linear-gradient(to right, pink,black,pink)";
